@@ -1,6 +1,6 @@
-// Service Worker for Mobile Delivery Note App
+// Service Worker for Raw Stock QR Code Generator App
 
-const CACHE_NAME = 'delivery-note-app-v1';
+const CACHE_NAME = 'qr-code-generator-app-v1';
 
 // Dynamically determine the base path for assets
 const getBasePath = () => {
@@ -39,18 +39,20 @@ const getAssetPath = (asset) => {
 
 // Assets to cache
 const ASSETS_TO_CACHE = [
-  'Mobile Delivery Note App.html',
-  'mobile-delivery-note-styles.css',
-  'mobile-delivery-note.js',
+  'index.html',
+  'Raw Stock QR Code Generator.html',
+  'styles.css',
+  'script.js',
   'reproplast-logo.svg',
   'app-icon.png',
   'app-icon-512.png',
   'base.js',
   '404.html',
   'manifest.json',
-  'https://unpkg.com/html5-qrcode',
+  'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+  'https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js',
   'https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuid.min.js'
 ];
 

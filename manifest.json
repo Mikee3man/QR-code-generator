@@ -1,7 +1,7 @@
 {
-  "name": "Mobile Delivery Note Generator",
-  "short_name": "Delivery Note",
-  "description": "A mobile-friendly app for generating delivery notes by scanning QR codes",
+  "name": "Raw Stock QR Code Generator",
+  "short_name": "QR Generator",
+  "description": "A web app for generating QR code labels for raw stock items",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",

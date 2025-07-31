@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Label Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include QR code library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <!-- Include PDF generation library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Include Excel generation library -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+    <!-- Include UUID generation library -->
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuid.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="reproplast-logo.svg" alt="Reproplast Logo" class="company-logo">
+            <h1>Raw Stock QR Code Generator</h1>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('labelGenerator')">Label Generator</button>
+            <button class="tab-btn" onclick="openTab('manageData')">Manage Data</button>
+            <button class="tab-btn" onclick="openTab('editExcel')">Edit Schedule</button>
+        </div>
+
+        <!-- Label Generator Tab -->
+        <div id="labelGenerator" class="tab-content active">
+            <div class="control-panel">
+                <button id="addRowBtn">Add Row</button>
+                <button id="generatePdfBtn">Generate PDF</button>
+            </div>
+
+            <div class="table-container">
+                <table id="labelTable">
+                    <thead>
+                        <tr>
+                            <th>Supplier Name</th>
+                            <th>Stock Code</th>
+                            <th>Mass (kg)</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="labelTableBody">
+                        <!-- Rows will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Preview section removed as requested -->
+        </div>
+
+        <!-- Manage Data Tab -->
+        <div id="manageData" class="tab-content">
+            <div class="data-management">
+                <div class="data-section">
+                    <h2>Manage Suppliers</h2>
+                    <div class="input-group">
+                        <input type="text" id="newSupplierInput" placeholder="Enter supplier name">
+                        <button id="addSupplierBtn">Add</button>
+                    </div>
+                    <div class="list-container">
+                        <ul id="supplierList" class="data-list">
+                            <!-- Suppliers will be added here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="data-section">
+                    <h2>Manage Stock Codes</h2>
+                    <div class="input-group">
+                        <input type="text" id="newStockCodeInput" placeholder="Enter stock code">
+                        <button id="addStockCodeBtn">Add</button>
+                    </div>
+                    <div class="list-container">
+                        <ul id="stockCodeList" class="data-list">
+                            <!-- Stock codes will be added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Excel Tab -->
+        <div id="editExcel" class="tab-content">
+            <div class="excel-editor">
+                <div class="control-panel">
+                    <button id="loadExcelBtn">Load Schedule Data</button>
+                    <button id="saveExcelBtn">Save Changes</button>
+                    <button id="addExcelRowBtn">Add Row</button>
+                </div>
+                <div class="table-container">
+                    <table id="excelTable">
+                        <thead>
+                            <tr>
+                                <th>Supplier</th>
+                                <th>Stock Code</th>
+                                <th>Mass (kg)</th>
+                                <th>Date</th>
+                                <th>Timestamp</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="excelTableBody">
+                            <!-- Excel data rows will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template for the label -->
+    <div id="labelTemplate" class="label-template">
+        <div class="label-content">
+            <div class="qr-code"></div>
+            <div class="label-info">
+                <div class="info-row"><span class="info-label">Supplier:</span> <span class="supplier-value"></span></div>
+                <div class="info-row"><span class="info-label">Stock Code:</span> <span class="stock-code-value"></span></div>
+                <div class="info-row"><span class="info-label">Mass:</span> <span class="mass-value"></span> kg</div>
+                <div class="info-row"><span class="info-label">Date:</span> <span class="date-value"></span></div>
+                <div class="info-row"><span class="info-label">Type:</span> <span class="type-value">Raw</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
